@@ -1,10 +1,9 @@
-import turtle
+import turtle as t
 
-turtle.title("Battleship")
-turtle.bgcolor("navyblue")
-s = turtle.getscreen()
+t.title("Battleship")
+t.bgcolor("navyblue")
+s = t.getscreen()
 
-t = turtle.Turtle()
 t.color("white")
 t.pensize(1)
 
@@ -14,89 +13,31 @@ for i in range(4):   #code for the main square
 
 #  NOTE THE ORIGIN OF THE GRID IS ON THE TOP LEFT OF THE MAIN SQUARE
 
-t.penup()
-t.fd(10)
-t.write('1')
-t.rt(90)
-t.pendown()
-t.fd(100)
+# start while loop to draw grid
 
-t.lt(90)
-t.penup()
-t.fd(10)
-t.lt(90)
-t.pendown()
-t.fd(100)
-t.write(2)
+i = 1
 
-t.rt(90)
-t.penup()
-t.fd(10)
-t.write(3)
-t.write
-t.rt(90)
-t.pendown()
-t.fd(100)
-
-t.lt(90)
-t.penup()
-t.fd(10)
-t.lt(90)
-t.pendown()
-t.fd(100)
-t.write(4)
+while i <= 10:
+    
+    t.penup()
+    t.fd(10)
+    t.write(i)
+    t.rt(90)
+    t.pendown()
+    t.fd(100)
+    
+    t.lt(90)
+    t.penup()
+    t.fd(10)
+    t.lt(90)
+    t.pendown()
+    t.fd(100)
+    t.write(i+1)
+    t.rt(90)
+    
+    i += 2
 
 t.rt(90)
-t.penup()
-t.fd(10)
-t.write(5)
-t.rt(90)
-t.pendown()
-t.fd(100)
-
-t.lt(90)
-t.penup()
-t.fd(10)
-t.lt(90)
-t.pendown()
-t.fd(100)
-t.write(6)
-
-t.rt(90)
-t.penup()
-t.fd(10)
-t.write(7)
-t.rt(90)
-t.pendown()
-t.fd(100)
-
-t.lt(90)
-t.penup()
-t.fd(10)
-t.lt(90)
-t.pendown()
-t.fd(100)
-t.write(8)
-
-t.rt(90)
-t.penup()
-t.fd(10)
-t.write(9)
-t.rt(90)
-t.pendown()
-t.fd(100)
-
-t.lt(90)
-t.penup()
-t.fd(10)
-t.lt(90)
-t.pendown()
-t.fd(100)
-t.write(10)
-
-# end of the columns (numbers)
-
-t.rt(180)
 t.penup()
 t.fd(10)
 t.rt(90)
