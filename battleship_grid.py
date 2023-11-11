@@ -37,6 +37,8 @@ while i <= 10:
     
     i += 2
 
+# horizontal lines
+
 t.rt(90)
 t.penup()
 t.fd(10)
