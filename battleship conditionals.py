@@ -15,5 +15,3 @@ def player_turn():
         print('Invalid input, please try again')
 
 player_turn()                                               #Execute all functions
-
-#test edit
