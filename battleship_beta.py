@@ -23,7 +23,7 @@ def grid():
     # start while loop to draw grid
         
     i = 0
-    
+
     while i <= (len(letters) - 1):
         
         t.penup()
@@ -43,98 +43,30 @@ def grid():
         t.rt(90)
         
         i += 2
-    
-    # horizontal lines - change to numbers, put into a loop
-    
-    t.rt(90)
-    t.penup()
-    t.fd(10)
-    t.rt(90)
-    t.pendown()
-    t.fd(100)
-    t.penup()
-    t.fd(10)
-    t.write('A')
-    
-    t.lt(90)
-    t.fd(10)
-    t.write('B')
-    t.lt(90)
-    t.fd(10)
-    t.pendown()
-    t.fd(100)
-    
-    t.penup()
-    t.rt(90)
-    t.fd(10)
-    t.rt(90)
-    t.pendown()
-    t.fd(100)
-    t.penup()
-    t.fd(10)
-    t.write('C')
-    
-    t.lt(90)
-    t.fd(10)
-    t.write('D')
-    t.lt(90)
-    t.fd(10)
-    t.pendown()
-    t.fd(100)
-    
-    t.penup()
-    t.rt(90)
-    t.fd(10)
-    t.rt(90)
-    t.pendown()
-    t.fd(100)
-    t.penup()
-    t.fd(10)
-    t.write('E')
-    
-    t.lt(90)
-    t.fd(10)
-    t.write('F')
-    t.lt(90)
-    t.fd(10)
-    t.pendown()
-    t.fd(100)
-    
-    t.penup()
-    t.rt(90)
-    t.fd(10)
-    t.rt(90)
-    t.pendown()
-    t.fd(100)
-    t.penup()
-    t.fd(10)
-    t.write('G')
-    
-    t.lt(90)
-    t.fd(10)
-    t.write('H')
-    t.lt(90)
-    t.fd(10)
-    t.pendown()
-    t.fd(100)
-    
-    t.penup()
-    t.rt(90)
-    t.fd(10)
-    t.rt(90)
-    t.pendown()
-    t.fd(100)
-    t.penup()
-    t.fd(10)
-    t.write('I')
-    
-    t.lt(90)
-    t.fd(10)
-    t.write('J')
-    t.lt(90)
-    t.fd(10)
-    t.pendown()
-    t.fd(100)
+        
+    j = 1
+
+    while j <= 10:
+        
+        t.rt(90)
+        t.penup()
+        t.fd(10)
+        t.rt(90)
+        t.pendown()
+        t.fd(100)
+        t.penup()
+        t.fd(10)
+        t.write(j)
+        
+        t.lt(90)
+        t.fd(10)
+        t.write(j+1)
+        t.lt(90)
+        t.fd(10)
+        t.pendown()
+        t.fd(100)
+        
+        j += 2
     t.penup()
 
 def is_duplicate_double(list1, list2):
