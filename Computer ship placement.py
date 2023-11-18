@@ -1,14 +1,14 @@
 import random as r
 alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
-
+#This function checks to see if there are any duplicate sublists in a list
 def is_duplicate_double(list1, list2):
     for entries in list2:
         if entries in list1:
             return True
     return False
 
-#This function checks to see if there are any duplicate sublists in a list
+#This function checks to see if there are any duplicate sublists in two lists, it is very type sensitive, so if any changes in type need to be made chech to make sure it works with this function.
 def is_duplicate_single(list1):
     unique_entries = set()
     for sublists in list1:
@@ -24,13 +24,14 @@ while unique2 == True:
     j = 0
     #This loop is required to make sure that if one of the loops repeats indefinitly, then it will restart from the beinning.
     while j < 1000:
+        #Computer_coordinates is the overall list of coordinates from the ships combined into one. It is used to check if there are any duplicates.
         Computer_coordinates = []
         #ship1 - width 5
         #This code finds the coordinates for the first ship.
         #orientation determines if the ship will be horizontal or vertical
         orientation = r.randrange(1,3)
         i=0
-        #Computer_coordinates is a collection of the coordinates found so far, it is used to check for duplicate coordinates and as the final result of the computers ship placements.
+        #Each ship has its own list of coordinates, this is required to make sure that the coordinates reset every time that duplicates are found.
         computer_ship1 = []
         if orientation == 1:
             rand_letter = r.randrange(0,6)
