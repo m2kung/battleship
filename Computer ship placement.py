@@ -8,7 +8,7 @@ def is_duplicate_double(list1, list2):
             return True
     return False
 
-#This function checks to see if there are any duplicate sublists in two lists, it is very type sensitive, so if any changes in type need to be made chech to make sure it works with this function.
+#This function checks to see if there are any duplicate sublists in two lists, it is very type sensitive, so if there are any changes in type we need to make sure it works with this function.
 def is_duplicate_single(list1):
     unique_entries = set()
     for sublists in list1:
