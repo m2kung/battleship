@@ -10,6 +10,7 @@ def grid():
     t.title("Battleship")
     t.bgcolor("navyblue")
     s = t.getscreen() #Can we remove the 's =' ?
+    t.setworldcoordinates(-10, -105, 105, 5)
     
     t.color("white")
     t.pensize(1)
