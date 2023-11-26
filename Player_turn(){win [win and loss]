@@ -1,0 +1,53 @@
+def player_turn():
+    turns = 0  # Add a variable to keep track of the player's turns
+
+    while len(Computer_coordinates) > 0:
+        valid_input = False
+        while not valid_input:
+            guess_letter = input("Guess a letter: ")
+            guess_number = input("Guess a number: ")
+
+            # Use string methods to verify that the first input is a letter and the second is a number
+            if guess_letter.isalpha() and guess_number.isdigit():
+                valid_input = True
+            else:
+                print('Invalid input. Please enter a valid letter and number.')
+
+        location_coordinates = [
+            10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]
+
+        # Return the inputted guess as a list which can be searched for within Computer_locations, else return None
+        guess = [guess_letter, guess_number]
+        if guess in Computer_coordinates:  # Determine if the user guessed a location with a ship
+            print('HIT')
+            # Removes the coordinate from available ship coordinates to guess
+            Computer_coordinates.remove(guess)
+            # Tells the turtle to fill in the guessed square red/white
+            t.color("red")
+            t.goto(location_coordinates)
+            t.begin_fill()
+            for j in range(4):
+                t.fd(10)
+                t.rt(90)
+            t.end_fill()
+        else:
+            print('MISS')
+            t.color("white")
+            # This can maybe be streamlined with the hit code; just change the color, don't have to repeat turtle code
+            t.goto(location_coordinates)
+            t.begin_fill()
+            for j in range(4):
+                t.fd(10)
+                t.rt(90)
+            t.end_fill()
+
+        turns += 1  # Increment the turns counter
+
+    if len(Computer_coordinates) == 0:
+        print("Congratulations! You've sunk all the ships. You win!")
+    else:
+        print("Sorry, you've run out of turns. The computer wins!")
+
+# Add the following line to call the grid function before the player's turn
+grid()
+player_turn()
