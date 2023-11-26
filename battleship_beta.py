@@ -92,8 +92,8 @@ while unique2 == True:
     j = 0
     #This loop is required to make sure that if one of the loops repeats indefinitly, then it will restart from the beinning.
     while j < 1000:
-        #Computer_coordinates is the overall list of coordinates from the ships combined into one. It is used to check if there are any duplicates.
-        Computer_coordinates = []
+        #all_ships_coordinates is the overall list of coordinates from the ships combined into one. It is used to check if there are any duplicates.
+        all_ships_coordinates = []
         #ship1 - width 5
         #This code finds the coordinates for the first ship.
         #orientation determines if the ship will be horizontal or vertical
@@ -113,7 +113,7 @@ while unique2 == True:
             while (i < 5):
                 computer_ship1 += [[letters[rand_letter] , str(rand_number + i)]]
                 i +=1
-        Computer_coordinates += computer_ship1
+        all_ships_coordinates += computer_ship1
         
         
         #ship2- width 4
@@ -138,8 +138,8 @@ while unique2 == True:
                     computer_ship2 += [[letters[rand_letter] , str(rand_number + i)]]
                     i += 1
                     j += 1
-            unique = is_duplicate_double(Computer_coordinates, computer_ship2)
-        Computer_coordinates += computer_ship2
+            unique = is_duplicate_double(all_ships_coordinates, computer_ship2)
+        all_ships_coordinates += computer_ship2
             
         
         #ship3 - width 3
@@ -163,8 +163,8 @@ while unique2 == True:
                     computer_ship3 += [[letters[rand_letter] , str(rand_number + i)]]
                     i += 1
                     j += 1
-            unique = is_duplicate_double(Computer_coordinates,computer_ship3)
-        Computer_coordinates += computer_ship3
+            unique = is_duplicate_double(all_ships_coordinates,computer_ship3)
+        all_ships_coordinates += computer_ship3
         
         
         #ship4 - width 3
@@ -188,8 +188,8 @@ while unique2 == True:
                     computer_ship4 += [[letters[rand_letter] , str(rand_number + i)]]
                     i += 1
                     j += 1
-            unique = is_duplicate_double(Computer_coordinates,computer_ship4)
-        Computer_coordinates += computer_ship4
+            unique = is_duplicate_double(all_ships_coordinates,computer_ship4)
+        all_ships_coordinates += computer_ship4
         
         
         #ship5 - width 2
@@ -213,40 +213,58 @@ while unique2 == True:
                     computer_ship5 += [[letters[rand_letter] , str(rand_number + i)]]
                     i += 1
                     j += 1
-            unique = is_duplicate_double(Computer_coordinates,computer_ship5)
-        Computer_coordinates += computer_ship5
+            unique = is_duplicate_double(all_ships_coordinates,computer_ship5)
+        all_ships_coordinates += computer_ship5
         break
-    unique2 = is_duplicate_single(Computer_coordinates)
+    unique2 = is_duplicate_single(all_ships_coordinates)
 
 def player_turn():
 
-    guess_letter = input("Guess a letter") 
-    guess_number = input("Guess a number")                  # Ask player to input guess
-    location_coordinates = [10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]
+    remaining_guesses = 50  # Add a variable to keep track of the player's turns
 
-    if guess_letter.isalpha() and guess_number.isdigit():   # Use string methods to verify that the first input is a letter and the second is a number
-       guess = [guess_letter, guess_number]                  # Return the inputted guess as a list which can be searched for within Computer_locations, else return None
-       if guess in Computer_coordinates:                    # Determine if the user guessed a location with a ship
-            print('HIT')
-            list.remove(Computer_coordinates, guess)        # Removes the coordinate from available ship coordinates to guess
-            t.color("red")                                  # Tells the turtle to fill in the guessed square red/white
-            t.goto(location_coordinates)
-            t.begin_fill()
-            for j in range(4):
-                t.fd(10)
-                t.rt(90)
-            t.end_fill()
-       else:
-            print('MISS')                                        
-            t.color("white")
-            t.goto(location_coordinates)                        # This can maybe be streamlined with the hit code; just change the color, don't have to repeat turtle code
-            t.begin_fill()
-            for j in range(4):
-                t.fd(10)
-                t.rt(90)
-            t.end_fill()
-    else:
-        print('Invalid input, please try again')
+    while len(all_ships_coordinates) > 0:
+        guess_letter = input("Guess a letter: ")
+        guess_number = input("Guess a number: ")        
 
-grid()
+        # Use string methods to verify that the first input is a letter and the second is a number
+        if guess_letter.isalpha() and guess_number.isdigit() and 1 <= int(guess_number) <= 10 and guess_letter in letters:
+            location_coordinates = [10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]
+            guess = [guess_letter, guess_number]
+            
+            # Return the inputted guess as a list which can be searched for within Computer_locations, else return None
+            if guess in all_ships_coordinates:  # Determine if the user guessed a location with a ship
+                print("HIT")
+                remaining_guesses -= 1
+                print("Remaining guesses: " + str(remaining_guesses))
+                # Removes the coordinate from available ship coordinates to guess
+                all_ships_coordinates.remove(guess)
+                # Tells the turtle to fill in the guessed square red/white
+                t.color("red")
+                t.goto(location_coordinates)
+                t.begin_fill()
+                for j in range(4):
+                    t.fd(10)
+                    t.rt(90)
+                t.end_fill()
+            else:
+                print("MISS")
+                remaining_guesses -= 1
+                print("Remaining guesses: " + str(remaining_guesses))
+                t.color("white")
+                t.goto(location_coordinates)
+                t.begin_fill()
+                for j in range(4):
+                    t.fd(10)
+                    t.rt(90)
+                t.end_fill()
+        else:
+            print('Invalid input. Please try again.')
+            remaining_guesses += 0
+
+        if len(all_ships_coordinates) == 0:
+            print("Congratulations! You've sunk all the ships. You win!")
+        elif remaining_guesses == 0:
+            print("Sorry, you've run out of turns. The computer wins!")
+
+#grid()
 player_turn()                                               #Execute all functions
