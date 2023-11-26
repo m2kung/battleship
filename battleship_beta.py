@@ -266,5 +266,5 @@ def player_turn():
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
 
-#grid()
+grid()
 player_turn()                                               #Execute all functions
