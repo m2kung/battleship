@@ -5,7 +5,6 @@ import random as r
 
 letter_to_number = {'A' : 1, 'B' : 2, 'C' : 3, 'D' : 4, 'E' : 5, 'F' : 6, 'G' : 7, 'H' : 8, 'I' : 9, 'J' : 10}
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-guesses = []
 
 def grid():
     t.title("Battleship")
@@ -220,6 +219,8 @@ while unique2 == True:
         break
     unique2 = is_duplicate_single(all_ships_coordinates)
 
+guesses = []
+
 def player_turn():
 
     remaining_guesses = 50  # Add a variable to keep track of the player's turns
@@ -270,5 +271,5 @@ def player_turn():
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
 
-grid()
+#grid()
 player_turn()                                               #Execute all functions
