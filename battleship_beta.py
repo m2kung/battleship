@@ -43,29 +43,32 @@ def grid():
         t.write(letters[i+1])
         t.rt(90)
         
-        i += 2
+        i +=2
         
     j = 1
 
     while j <= 10:
-        
-        t.rt(90)
+    
         t.penup()
-        t.fd(10)
-        t.rt(90)
-        t.pendown()
-        t.fd(100)
-        t.penup()
-        t.fd(10)
+        t.fd(3)
         t.write(j)
-        
-        t.lt(90)
-        t.fd(10)
-        t.write(j+1)
-        t.lt(90)
-        t.fd(10)
+        t.fd(7)
+        t.rt(90)
         t.pendown()
         t.fd(100)
+        
+        t.lt(90)
+        t.penup()
+        t.fd(10)
+        t.lt(90)
+        t.pendown()
+        t.fd(100)
+        t.penup()
+        t.lt(90)
+        t.fd(7)
+        t.write(j+1)
+        t.rt(180)
+        t.fd(7)
         
         j += 2
     t.penup()
