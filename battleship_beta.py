@@ -28,8 +28,9 @@ def grid():
     while i <= (len(letters) - 1):
         
         t.penup()
-        t.fd(10)
+        t.fd(3)
         t.write(letters[i])
+        t.fd(7)
         t.rt(90)
         t.pendown()
         t.fd(100)
@@ -40,8 +41,12 @@ def grid():
         t.lt(90)
         t.pendown()
         t.fd(100)
+        t.penup()
+        t.lt(90)
+        t.fd(7)
         t.write(letters[i+1])
-        t.rt(90)
+        t.rt(180)
+        t.fd(7)
         
         i +=2
         
@@ -49,29 +54,27 @@ def grid():
 
     while j <= 10:
     
+        t.rt(90)
         t.penup()
-        t.fd(3)
-        t.write(j)
-        t.fd(7)
+        t.fd(10)
         t.rt(90)
         t.pendown()
         t.fd(100)
+        t.penup()
+        t.fd(15)
+        t.write(j)
         
         t.lt(90)
-        t.penup()
         t.fd(10)
+        t.write(j+1)
         t.lt(90)
+        t.fd(15)
         t.pendown()
         t.fd(100)
-        t.penup()
-        t.lt(90)
-        t.fd(7)
-        t.write(j+1)
-        t.rt(180)
-        t.fd(7)
         
         j += 2
-    t.penup()
+    
+t.penup()
 
 #This function checks to see if there are any duplicate sublists in a list
 def is_duplicate_double(list1, list2):
