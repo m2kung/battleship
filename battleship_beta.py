@@ -61,14 +61,14 @@ def grid():
         t.pendown()
         t.fd(100)
         t.penup()
-        t.fd(15)
+        t.fd(10)
         t.write(j)
         
         t.lt(90)
         t.fd(10)
         t.write(j+1)
         t.lt(90)
-        t.fd(15)
+        t.fd(10)
         t.pendown()
         t.fd(100)
         
