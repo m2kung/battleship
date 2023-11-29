@@ -227,22 +227,21 @@ while unique2 == True:
 
 guesses = []
 
-def player_turn():
+def player_turn():            # Create a function for processing player's inputs
 
-    remaining_guesses = 50  # Add a variable to keep track of the player's turns
+    remaining_guesses = 50    # Create a variable remaining_guesses to keep track of the player's turns
 
-    while len(all_ships_coordinates) > 0:
+    while len(all_ships_coordinates) > 0:                # Ask for player's inputs so long as there are ships remaining
         guess_letter = input("Guess a letter: ")
         guess_number = input("Guess a number: ") 
-        guess = [guess_letter, guess_number]
+        guess = [guess_letter, guess_number]            # Create a variable guess that is of type list
 
         # Use string methods to verify that the first input is a letter and the second is a number
-        if guess_letter.isalpha() and guess_number.isdigit() and 1 <= int(guess_number) <= 10 and guess_letter in letters and guess not in guesses:
-            location_coordinates = [10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]
-            
-            # Return the inputted guess as a list which can be searched for within Computer_locations, else return None
+        if guess_letter.isalpha() and guess_number.isdigit() and 1 <= int(guess_number) <= 10 and guess_letter in letters and guess not in guesses: # Ensure that the player has inputted a letter A - J and number 1 - 10
+            location_coordinates = [10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]                                        # Create a variable location_coordinates which corresponds to x and y values of the top-left corner of the box for the turtle
+                                                                                                                                                    # Return the inputted guess as a list which can be searched for within Computer_locations, else return None
             if guess in all_ships_coordinates:  # Determine if the user guessed a location with a ship
-                print("HIT")
+                print("HIT")                    # If true, tell the user they hit a ship, tell the turtle to fill the guessed coordinates red, and decrease remaining guesses by 1
                 remaining_guesses -= 1
                 print("Remaining guesses: " + str(remaining_guesses))
                 # Removes the coordinate from available ship coordinates to guess
@@ -256,7 +255,7 @@ def player_turn():
                     t.rt(90)
                 t.end_fill()
             else:
-                print("MISS")
+                print("MISS")            # If false, tell the user they missed a ship, tell the turtle to fill the guessed coordinates white, and decrease remaining guesses by 1
                 remaining_guesses -= 1
                 print("Remaining guesses: " + str(remaining_guesses))
                 t.color("white")
@@ -266,9 +265,9 @@ def player_turn():
                     t.fd(10)
                     t.rt(90)
                 t.end_fill()
-            guesses.append(guess)
+            guesses.append(guess)        # If the input is valid (hit or miss), add the guessed location to a list of all the guesses they make throughout the game; this ensures that the player cannot guess the same location twice
             print(guesses)
-        else:
+        else:                        # If the input is invalid, tell the user, and re-iterate remaining_guesses so that the code loops back
             print('Invalid input. Please try again.')
             remaining_guesses += 0
 
@@ -277,5 +276,5 @@ def player_turn():
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
 
-#grid()
+grid()
 player_turn()                                               #Execute all functions
