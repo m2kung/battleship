@@ -74,7 +74,7 @@ def grid():
         
         j += 2
     
-t.penup()
+    t.penup()
 
 #This function checks to see if there are any duplicate sublists in a list
 def is_duplicate_double(list1, list2):
