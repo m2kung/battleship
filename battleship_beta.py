@@ -9,7 +9,7 @@ letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 def grid():
     t.title("Battleship")
     t.bgcolor("navyblue")
-    s = t.getscreen() #Can we remove the 's =' ?
+    s = t.getscreen() #needed to disply the screen
     t.setworldcoordinates(-10, -105, 105, 5)
     
     t.color("white")
@@ -24,8 +24,9 @@ def grid():
     # start while loop to draw grid
         
     i = 0
-
-    while i <= (len(letters) - 1):
+    #while loop starts at the top left corner of the grid
+    
+    while i <= (len(letters) - 1): #giving i a value from a list of letters
         
         t.penup()
         t.fd(3)
@@ -52,7 +53,9 @@ def grid():
         
     j = 1
 
-    while j <= 10:
+    # this while loop starts from the top right corner or the square
+    
+    while j <= 10:   # giving j a value from 1 to 10
     
         t.rt(90)
         t.penup()
