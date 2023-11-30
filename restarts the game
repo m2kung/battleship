@@ -32,3 +32,31 @@ if __name__ == "__main__":
     
 grid()
 player_turn()
+
+#-----------------------------------------------------------------------------------------------------------------------
+'''
+import turtle as t
+import random as r
+
+# ... (rest of your code remains unchanged)
+
+def reset_game():
+    t.reset()  # Reset the turtle graphics window
+    grid()     # Redraw the grid
+    player_turn()  # Start a new game
+
+def play_again():
+    response = input("Do you want to play again? (yes/no): ").lower()
+    return response == 'yes'
+
+def main():
+    while True:  # Outer loop to keep playing the game
+        reset_game()  # Reset the game for the first run
+
+        if not play_again():
+            print("Thanks for playing. Goodbye!")
+            break  # Exit the loop and end the program if the player doesn't want to play again
+
+if __name__ == "__main__":
+    main()
+'''
