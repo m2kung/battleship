@@ -1,0 +1,34 @@
+# code before stays the same
+
+guesses = []
+
+def player_turn():            # Create a function for processing player's inputs
+
+    remaining_guesses = 5    # i changed it to make testing easier
+
+    while len(all_ships_coordinates) > 0 and remaining_guesses > 0:                # Ask for player's inputs so long as there are ships remaining
+        # rest of the code stays the same
+            
+def clear_and_redraw_grid():
+    t.clear()
+    grid()
+    
+def play_game():
+    while True:
+        clear_and_redraw_grid()
+        player_turn()
+
+        play_again = input("Do you want to play again? (yes/no): ").lower()
+        if play_again != 'yes':
+            t.bye()
+            break
+
+
+def main():
+    play_game()
+
+if __name__ == "__main__":
+    main()
+    
+grid()
+player_turn()
