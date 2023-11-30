@@ -235,7 +235,7 @@ def player_turn():            # Create a function for processing player's inputs
 
     remaining_guesses = 50    # Create a variable remaining_guesses to keep track of the player's turns
 
-    while len(all_ships_coordinates) > 0 and remaining_guesses > 0:                # Ask for player's inputs so long as there are ships remaining
+    while len(all_ships_coordinates) > 0:                # Ask for player's inputs so long as there are ships remaining
         guess_letter = input("Guess a letter: ").capitalize()
         guess_number = input("Guess a number: ") 
         guess = [guess_letter, guess_number]            # Create a variable guess that is of type list. This is so that we can check whether or not the entry is also an entry in all_ships_coordinates, in which case the guess is a HIT
@@ -281,11 +281,34 @@ def player_turn():            # Create a function for processing player's inputs
         else:                        # If the input is invalid, tell the user, and re-iterate remaining_guesses so that the code loops back
             print('Invalid input. Please try again.')
             remaining_guesses += 0
-            
+        
         if len(all_ships_coordinates) == 0:
             print("Congratulations! You've sunk all the ships. You win!")
-        elif remaining_guesses == 0:
+            play_game(False)
+        elif remaining_guesses == 48:
             print("Sorry, you've run out of turns. The computer wins!")
+            play_game(False)
+        print(all_ships_coordinates)
+            
+def clear_and_redraw_grid():
+    t.clear()
+    #grid()
+    
+def play_game(isTrue):
+    while isTrue == True:
+        clear_and_redraw_grid()
+        player_turn()
+    if isTrue == False:
+        play_again = input("Do you want to play again? (yes/no): ").lower()
+        if play_again != 'yes':
+            t.bye()
+
+
+def main():
+    play_game(True)
+
+if __name__ == "__main__":
+    main()
             
 #grid()
-player_turn()                                               #Execute all functions
+#player_turn()                                               #Execute all functions
