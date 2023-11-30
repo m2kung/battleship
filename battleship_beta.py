@@ -235,10 +235,15 @@ def player_turn():            # Create a function for processing player's inputs
 
     remaining_guesses = 50    # Create a variable remaining_guesses to keep track of the player's turns
 
+    if len(all_ships_coordinates) == 0:
+        print("Congratulations! You've sunk all the ships. You win!")
+    elif remaining_guesses == 0:
+        print("Sorry, you've run out of turns. The computer wins!")
+
     while len(all_ships_coordinates) > 0:                # Ask for player's inputs so long as there are ships remaining
         guess_letter = input("Guess a letter: ").capitalize()
         guess_number = input("Guess a number: ") 
-        guess = [guess_letter, guess_number]            # Create a variable guess that is of type list
+        guess = [guess_letter, guess_number]            # Create a variable guess that is of type list. This is so that we can check whether or not the entry is also an entry in all_ships_coordinates, in which case the guess is a HIT
 
         # Use string methods to verify that the first input is a letter and the second is a number
         if guess_letter.isalpha() and guess_number.isdigit() and 1 <= int(guess_number) <= 10 and guess_letter in letters and guess not in guesses: # Ensure that the player has inputted a letter A - J and number 1 - 10
@@ -275,14 +280,12 @@ def player_turn():            # Create a function for processing player's inputs
                     t.rt(90)
                 t.end_fill()
             guesses.append(guess)        # If the input is valid (hit or miss), add the guessed location to a list of all the guesses they make throughout the game; this ensures that the player cannot guess the same location twice
+        elif guess in guesses:
+            print("You already guessed that, try again.")
+            remaining_guesses += 0
         else:                        # If the input is invalid, tell the user, and re-iterate remaining_guesses so that the code loops back
             print('Invalid input. Please try again.')
             remaining_guesses += 0
-
-        if len(all_ships_coordinates) == 0:
-            print("Congratulations! You've sunk all the ships. You win!")
-        elif remaining_guesses == 0:
-            print("Sorry, you've run out of turns. The computer wins!")
             
 grid()
 player_turn()                                               #Execute all functions
