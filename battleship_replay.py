@@ -3,6 +3,7 @@ import random as r
 
 letter_to_number = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10}
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+guesses = []
 
 playing = True
 all_ships_coordinates = []
@@ -210,11 +211,12 @@ def grid():
             break
         unique2 = is_duplicate_single(all_ships_coordinates)
         all_ships = [computer_ship1, computer_ship2, computer_ship3, computer_ship4, computer_ship5]
-    
-    guesses = []
+        
 
 def player_turn():
-    global all_ships_coordinates, guesses
+    
+    
+    global all_ships_coordinates
     remaining_guesses = 50
     while len(all_ships_coordinates) > 0 and remaining_guesses > 0:
         guess_letter = input("Guess a letter: ").capitalize()
@@ -281,3 +283,4 @@ while playing == True:
         playing = True
     else:
         playing = False
+        t.bye()
