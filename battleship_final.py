@@ -1,4 +1,5 @@
 # Melanie Kung (MK)
+# Vidhi Patel (VP)
 
 import turtle as t
 import random as r
@@ -217,7 +218,8 @@ def grid():
 def player_turn():  #MK (unless otherwise stated)                       # Create a function for processing player's inputs
     
     
-    global all_ships_coordinates        # VP
+    global all_ships_coordinates        # (VP) Declare that 'all_ships_coordinates' is a global variable accessible throughout the program
+    
     remaining_guesses = 50                                              # Create a variable remaining_guesses to keep track of the player's turns; player gets a total of 50 guesses
     while len(all_ships_coordinates) > 0 and remaining_guesses > 0:     # Ask for player's inputs so long as there are ships remaining AND turns remaining (i.e. not WIN or LOSE)
         guess_letter = input("Guess a letter: ").capitalize()           # Asks the player for a letter and capitalizes it if it isn't capitalized
@@ -262,14 +264,14 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
         else:
             print('Invalid input. Please try again.')
             remaining_guesses += 0
-                
-        if len(all_ships_coordinates) == 0:     #VP
+
+        # (VP) Check for game-ending conditions: player wins if all ships are sunk, computer wins if player runs out of turns
+        if len(all_ships_coordinates) == 0:     
             print("Congratulations! You've sunk all the ships. You win!")
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
-#VP        
-#This loop controls the overall flow of the game, allowing the player to 
-#play multiple rounds. It resets the game state if the player chooses 
+#(VP)        
+#This loop resets the game state if the player chooses 
 #to play again and exits the game if the player chooses not to play again.
 
 while playing == True:
