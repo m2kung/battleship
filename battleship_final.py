@@ -224,7 +224,7 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
         guess_number = input("Guess a number: ")                        # Asks the player for a number
         guess = [guess_letter, guess_number]                            # Create a variable guess that is of type list. This is so that we can check whether or not the entry is also a sublist in all_ships_coordinates, in which case the guess is a HIT
         
-        if guess_letter.isalpha() and guess_number.isdigit() and int(guess_number) in range(10)and guess_letter in letters and guess not in guesses:  # Ensure that the player has inputted a letter A - J and number 1 - 10
+        if guess_letter.isalpha() and guess_number.isdigit() and int(guess_number) in range(11)and guess_letter in letters and guess not in guesses:  # Ensure that the player has inputted a letter A - J and number 1 - 10
             location_coordinates = [10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]       # Create a variable location_coordinates which corresponds to x and y values of the top-left corner of the box for the turtle
             
             remaining_guesses -= 1
