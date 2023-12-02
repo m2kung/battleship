@@ -224,8 +224,10 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
         guess_number = input("Guess a number: ")                        # Asks the player for a number
         guess = [guess_letter, guess_number]                            # Create a variable guess that is of type list. This is so that we can check whether or not the entry is also a sublist in all_ships_coordinates, in which case the guess is a HIT
         
-        if 1 <= int(guess_number) <= 10 and guess_letter in letters and guess not in guesses:       # Ensure that the player has inputted a letter A - J and number 1 - 10
+        if guess_letter.isalpha() and guess_number.isdigit() and int(guess_number) in range(10)and guess_letter in letters and guess not in guesses:  # Ensure that the player has inputted a letter A - J and number 1 - 10
             location_coordinates = [10 * (letter_to_number[guess_letter] - 1), -10 * (int(guess_number) - 1)]       # Create a variable location_coordinates which corresponds to x and y values of the top-left corner of the box for the turtle
+            
+            remaining_guesses -= 1
             
             if guess in all_ships_coordinates:                          # Determine if the user guessed a location with a ship
                 for ship in all_ships:
@@ -235,7 +237,6 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
                             print("You sank a ship. Keep going!")
                 all_ships_coordinates.remove(guess)                                     # Removes the coordinate from available ship coordinates to guess
                 print("HIT")                                            # If true, execute the following "hit" sequence: tell the user they hit a ship, 
-                remaining_guesses -= 1                                  # Decrease remaining guesses by 1, and
                 print("Remaining guesses: " + str(remaining_guesses))
                 t.color("red")                                          # Tell the turtle to go to the guessed coordinates and fill the square red
                 t.goto(location_coordinates)
@@ -246,7 +247,6 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
                 t.end_fill()
             else:
                 print("MISS")                                           # If false, execute the following "miss" sequence: tell the user they missed a ship,
-                remaining_guesses -= 1                                  # Decrease remaining guesses by 1, and
                 print("Remaining guesses: " + str(remaining_guesses))
                 t.color("white")
                 t.goto(location_coordinates)                            # Tell the turtle to go to the guessed coordinates and fill the square white,
