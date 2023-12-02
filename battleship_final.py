@@ -1,5 +1,5 @@
 # Melanie Kung (MK)
-# Vidhi Patel (VP)
+# Moira Mcmurtrie (MM)
 
 import turtle as t
 import random as r
@@ -85,13 +85,14 @@ def grid():
 
     t.penup()
 
-    def is_duplicate_double(list1, list2):
+#MM (unless otherwise stated)
+    def is_duplicate_double(list1, list2): #This function checks to see if there are any duplicate sublists in a list.
         for entries in list2:
             if entries in list1:
                 return True
         return False
 
-    def is_duplicate_single(list1):
+    def is_duplicate_single(list1): #This function checks to see if there are any duplicate sublists in two lists.
         unique_entries = set()
         for sublists in list1:
             sublist_tuple = tuple(sublists)
@@ -100,14 +101,16 @@ def grid():
             unique_entries.add(sublist_tuple)
         return False
 
-    unique2 = True
-    while unique2 == True:
+    unique2 = True #The following code randomly finds the coordinates of the 5 ships.
+    while unique2 == True: #This loop makes sure that if j reaches 1000 and the computer hasn't found unique coordinates for all of the ships yet then it will restart from the beginning.
         j = 0
-        while j < 1000:
-            all_ships_coordinates = []
-            all_ships = []
-            computer_ship1 = []
-            orientation = r.randrange(1,3)
+        while j < 1000: #This loop makes sure that if one of the loops repeats indefinitly, then it will restart from the beinning.
+            all_ships_coordinates = [] #all_ships_coordinates is the overall list of coordinates from the ships combined into one.
+            all_ships = [] #MK all_ships is a list of the sublist of the different ships, which is used to tell if a ship has sunk.
+            
+            #ship1 - width 5
+            computer_ship1 = [] 
+            orientation = r.randrange(1,3) #orientation determines if the ship will be horizontal or vertical
             i=0
             if orientation == 1:
                 rand_letter = r.randrange(0,6)
@@ -123,8 +126,9 @@ def grid():
                     i +=1
             all_ships_coordinates += computer_ship1
             
+            #ship2- width 4
             unique = True
-            while unique == True:
+            while unique == True: #unique is what ensures that there are no duplicate coordinates
                 computer_ship2 = []
                 orientation = r.randrange(1,3)
                 i=0
@@ -144,7 +148,8 @@ def grid():
                         j += 1
                 unique = is_duplicate_double(all_ships_coordinates, computer_ship2)
             all_ships_coordinates += computer_ship2
-                
+            
+            #ship3 - width 3
             unique = True
             while unique == True:
                 computer_ship3 = []
@@ -167,6 +172,7 @@ def grid():
                 unique = is_duplicate_double(all_ships_coordinates,computer_ship3)
             all_ships_coordinates += computer_ship3
             
+            #ship4 - width 3
             unique = True
             while unique == True:
                 computer_ship4 = []
@@ -189,6 +195,7 @@ def grid():
                 unique = is_duplicate_double(all_ships_coordinates,computer_ship4)
             all_ships_coordinates += computer_ship4
             
+            #ship5 - width 2
             unique = True
             while unique == True:
                 computer_ship5 = []
@@ -212,14 +219,13 @@ def grid():
             all_ships_coordinates += computer_ship5
             break
         unique2 = is_duplicate_single(all_ships_coordinates)
-        all_ships = [computer_ship1, computer_ship2, computer_ship3, computer_ship4, computer_ship5]
+        all_ships = [computer_ship1, computer_ship2, computer_ship3, computer_ship4, computer_ship5] #MK
         
 
 def player_turn():  #MK (unless otherwise stated)                       # Create a function for processing player's inputs
     
     
-    global all_ships_coordinates        # (VP) Declare that 'all_ships_coordinates' is a global variable accessible throughout the program
-    
+    global all_ships_coordinates        # VP
     remaining_guesses = 50                                              # Create a variable remaining_guesses to keep track of the player's turns; player gets a total of 50 guesses
     while len(all_ships_coordinates) > 0 and remaining_guesses > 0:     # Ask for player's inputs so long as there are ships remaining AND turns remaining (i.e. not WIN or LOSE)
         guess_letter = input("Guess a letter: ").capitalize()           # Asks the player for a letter and capitalizes it if it isn't capitalized
@@ -264,14 +270,14 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
         else:
             print('Invalid input. Please try again.')
             remaining_guesses += 0
-
-        # (VP) Check for game-ending conditions: player wins if all ships are sunk, computer wins if player runs out of turns
-        if len(all_ships_coordinates) == 0:     
+                
+        if len(all_ships_coordinates) == 0:     #VP
             print("Congratulations! You've sunk all the ships. You win!")
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
-#(VP)        
-#This loop resets the game state if the player chooses 
+#VP        
+#This loop controls the overall flow of the game, allowing the player to 
+#play multiple rounds. It resets the game state if the player chooses 
 #to play again and exits the game if the player chooses not to play again.
 
 while playing == True:
