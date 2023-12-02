@@ -267,21 +267,26 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
             print("Congratulations! You've sunk all the ships. You win!")
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
+#VP        
+#This loop controls the overall flow of the game, allowing the player to 
+#play multiple rounds. It resets the game state if the player chooses 
+#to play again and exits the game if the player chooses not to play again.
 
 while playing == True:
-    t.reset()
-    t.penup()
-    t.pendown()
-    
+    t.reset()          # Restes the turtle graphics to clear the previuos game's and ships
+    t.penup()          # pen up to prevent drawing lines when moving the turtle
+    t.pendown()        # Pen down to start drawing again
+
+    # grid() and player_turn() are both called to draw the grid and handle the player's turn
     grid()
     player_turn()
 
     play_again = input('Do you want to play again? (yes/no): ')
-    if play_again.lower() == 'yes':
-        t.setpos(105, 5)
-        all_ships_coordinates = []
-        guesses = []
-        playing = True
+    if play_again.lower() == 'yes':          # Checks if the player wants to play agin
+        t.setpos(105, 5)                     # Moves te turtle to a certain position
+        all_ships_coordinates = []           # Reset the list of player's guesses
+        guesses = []                         # Resets the list of player's guesses
+        playing = True                       # Continues playing the game if true
     else:
-        playing = False
-        t.bye()
+        playing = False                      # Stops playing the game if false
+        t.bye()                              # Closes the turtle graphics window
