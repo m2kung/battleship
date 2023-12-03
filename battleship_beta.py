@@ -15,16 +15,15 @@ def grid():
     t.color("white")
     t.pensize(1)
     
+    #  NOTE THE ORIGIN OF THE GRID IS ON THE TOP LEFT OF THE MAIN SQUARE
     for i in range(4):   #code for the main square
         t.fd(100)
         t.rt(90)
     
-    #  NOTE THE ORIGIN OF THE GRID IS ON THE TOP LEFT OF THE MAIN SQUARE
-    
     # start while loop to draw grid
         
     i = 0
-    #while loop starts at the top left corner of the grid
+    # while loop starts at the top left corner of the grid
     
     while i <= (len(letters) - 1): #giving i a value from a list of letters
         
