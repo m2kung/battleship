@@ -1,5 +1,6 @@
 # Melanie Kung (MK)
 # Moira Mcmurtrie (MM)
+# Yoasitha Pratheepan (YP)
 
 import turtle as t
 import random as r
@@ -16,6 +17,7 @@ def clear_grid():
     t.reset()
     t.setpos(-10, -105, 105, 5)
 
+# YP
 def grid():
     global all_ships
     global all_ships_coordinates
