@@ -1,6 +1,7 @@
 # Melanie Kung (MK)
 # Moira Mcmurtrie (MM)
 # Yoasitha Pratheepan (YP)
+# Vidhi Patel (VP)
 
 import turtle as t
 import random as r
@@ -23,7 +24,7 @@ def grid():
     global all_ships_coordinates
     t.title("Battleship")
     t.bgcolor("navyblue")
-    s = t.getscreen()  
+    t.getscreen()  
     t.setworldcoordinates(-10, -105, 105, 5)
 
     t.color("white")
