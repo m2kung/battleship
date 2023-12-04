@@ -21,7 +21,7 @@ def clear_grid():
 def grid():
     global all_ships
     global all_ships_coordinates
-    '''t.title("Battleship")
+    t.title("Battleship")
     t.bgcolor("navyblue")
     s = t.getscreen()  
     t.setworldcoordinates(-10, -105, 105, 5)
@@ -83,7 +83,7 @@ def grid():
         t.pendown()
         t.fd(100)
 
-        j += 2'''
+        j += 2
 
     t.penup()
 
