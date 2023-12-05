@@ -278,7 +278,7 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
             print("Congratulations! You've sunk all the ships. You win!")
         elif remaining_guesses == 0:
             print("Sorry, you've run out of turns. The computer wins!")
-#VP        
+#VP:       
 #This loop controls the overall flow of the game, allowing the player to 
 #play multiple rounds. It resets the game state if the player chooses 
 #to play again and exits the game if the player chooses not to play again.
