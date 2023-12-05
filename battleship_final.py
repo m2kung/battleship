@@ -273,12 +273,14 @@ def player_turn():  #MK (unless otherwise stated)                       # Create
         else:
             print('Invalid input. Please try again.')
             remaining_guesses += 0
-                
-        if len(all_ships_coordinates) == 0:     #VP
-            print("Congratulations! You've sunk all the ships. You win!")
+            
+            #VP:
+                # Check if there are no remaining ships on the board
+        if len(all_ships_coordinates) == 0:     # Check if the list of all ship coordinates is empty
+            print("Congratulations! You've sunk all the ships. You win!") # Display a victory message
         elif remaining_guesses == 0:
-            print("Sorry, you've run out of turns. The computer wins!")
-#VP:       
+            print("Sorry, you've run out of turns. The computer wins!")  # Display a defeat message when the player is out of turns
+    
 #This loop controls the overall flow of the game, allowing the player to 
 #play multiple rounds. It resets the game state if the player chooses 
 #to play again and exits the game if the player chooses not to play again.
